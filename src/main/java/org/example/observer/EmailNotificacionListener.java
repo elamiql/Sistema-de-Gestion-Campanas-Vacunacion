@@ -1,8 +1,8 @@
 package org.example.observer;
 
-import model.Cita;
+import org.example.model.Cita;
 
-public class EmailNotificationListener implements CitaListener {
+public class EmailNotificacionListener implements CitaListener {
     @Override
     public void onCitaAgendada(Cita cita) {
         System.out.println("[EMAIL] Cita #" + cita.getId() + " agendada para " + cita.getFechaHora());
