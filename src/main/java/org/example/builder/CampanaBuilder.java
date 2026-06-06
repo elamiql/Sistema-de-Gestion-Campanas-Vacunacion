@@ -1,12 +1,13 @@
 package org.example.builder;
 
-import java.time.LocalDate;
+import org.example.model.Campana;
 
-public class CampaniaBuilder implements Builder {
+public class CampanaBuilder implements Builder {
+    private int contadorId = 0;
     private String nombre;
     private String descripcion;
-    private LocalDate fechaInicio;
-    private LocalDate fechaTermino;
+    private String fechaInicio;
+    private String fechaTermino;
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
@@ -16,19 +17,18 @@ public class CampaniaBuilder implements Builder {
         this.descripcion = descripcion;
     }
 
-    public void setFechaInicio(LocalDate fechaInicio) {
+    public void setFechaInicio(String fechaInicio) {
         this.fechaInicio = fechaInicio;
     }
 
-    public void setFechaTermino(LocalDate fechaTermino) {
+    public void setFechaTermino(String fechaTermino) {
         this.fechaTermino = fechaTermino;
     }
 
-    // void hasta que se cree clase Campaña
-    public void construir() throws RuntimeException {
+    public Campana construir() throws RuntimeException {
         if (nombre == null && descripcion == null && fechaInicio == null && fechaTermino == null) {
             throw new RuntimeException();
         }
-        // return new ...
+        return new Campana(++contadorId, nombre, descripcion, fechaInicio, fechaTermino);
     }
 }

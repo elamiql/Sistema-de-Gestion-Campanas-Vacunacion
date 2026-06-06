@@ -1,5 +1,6 @@
 package org.example;
 
+import org.example.builder.CampanaBuilder;
 import org.example.model.*;
 import java.util.List;
 
@@ -8,23 +9,19 @@ public class Main {
         System.out.println("=== Prueba de getHistorialVacunacion() con 2 Personas ===\n");
 
         // Crear campanas
-        Campana campana1 = new Campana(
-            1,
-            "Campana COVID-19",
-            "Vacunacion contra COVID-19",
-            "2024-01-01",
-            "2024-12-31",
-            "ACTIVA"
-        );
+        CampanaBuilder cb = new CampanaBuilder();
 
-        Campana campana2 = new Campana(
-            2,
-            "Campana Influenza",
-            "Vacunacion contra Influenza",
-            "2024-03-01",
-            "2024-08-31",
-            "ACTIVA"
-        );
+        cb.setNombre("Campana COVID-19");
+        cb.setDescripcion("Vacunacion contra COVID-19");
+        cb.setFechaInicio("2024-01-01");
+        cb.setFechaTermino("2024-12-31");
+        Campana campana1 = cb.construir();
+
+        cb.setNombre("Campana Influenza");
+        cb.setDescripcion("Vacunacion contra Influenza");
+        cb.setFechaInicio("2024-03-01");
+        cb.setFechaTermino("2024-08-31");
+        Campana campana2 = cb.construir();
 
         // Crear centro de vacunacion
         CentroVacunacion centro = new CentroVacunacion(

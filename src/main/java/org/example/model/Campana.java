@@ -9,13 +9,13 @@ public class Campana {
     private String estado;
 
     // Constructor con todos los parámetros
-    public Campana(int id, String nombre, String descripcion, String fechaInicio, String fechaTermino, String estado) {
+    public Campana(int id, String nombre, String descripcion, String fechaInicio, String fechaTermino) {
         this.id = id;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.fechaInicio = fechaInicio;
         this.fechaTermino = fechaTermino;
-        this.estado = estado;
+        this.estado = "ACTIVA";
     }
 
     // Getters y Setters
