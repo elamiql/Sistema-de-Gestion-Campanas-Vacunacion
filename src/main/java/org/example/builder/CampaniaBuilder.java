@@ -1,5 +1,7 @@
 package org.example.builder;
 
+import org.example.model.Campana;
+
 import java.time.LocalDate;
 
 public class CampaniaBuilder implements Builder {
@@ -24,11 +26,17 @@ public class CampaniaBuilder implements Builder {
         this.fechaTermino = fechaTermino;
     }
 
-    // void hasta que se cree clase Campaña
-    public void construir() throws RuntimeException {
-        if (nombre == null && descripcion == null && fechaInicio == null && fechaTermino == null) {
-            throw new RuntimeException();
+    public Campana construir() {
+        if (nombre == null || descripcion == null || fechaInicio == null || fechaTermino == null) {
+            throw new RuntimeException("Faltan campos obligatorios para construir la Campana");
         }
-        // return new ...
+        return new Campana(
+                (int) System.currentTimeMillis() % 10000,
+                nombre,
+                descripcion,
+                fechaInicio.toString(),
+                fechaTermino.toString(),
+                "ACTIVA"
+        );
     }
 }
