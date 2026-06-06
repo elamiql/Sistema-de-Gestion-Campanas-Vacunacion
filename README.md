@@ -59,8 +59,52 @@ SistemaGestionCampanaVacunacion/
 
 ## Instrucciones de Ejecución
 
-<!-- PENDIENTE: agregar instrucciones de compilación y ejecución una vez que Main.java esté completo -->
+Instrucciones de Ejecución\
+Este proyecto utiliza Maven. Para facilitar la compilación y ejecución sin necesidad de tener Maven instalado localmente en el sistema operativo, se incluye el ejecutable Maven Wrapper dentro del repositorio.
 
+Abre una terminal en la carpeta raíz del proyecto y utiliza los siguientes comandos según tu sistema operativo.
+
+1. Compilar el proyecto
+
+En Windows:
+```
+Bash
+mvnw.cmd clean compile
+```
+En Linux o Mac:
+```
+Bash
+./mvnw clean compile
+```
+
+2. Ejecutar el programa
+
+Para iniciar la clase principal (Main) en Windows:
+
+```
+Bash
+mvnw.cmd exec:java -Dexec.mainClass="org.example.Main"
+```
+
+Para iniciar la clase principal (Main) en Linux o Mac:
+
+```
+Bash
+./mvnw exec:java -Dexec.mainClass="org.example.Main"
+```
+
+Para iniciar la segunda interfaz (Main2) en Windows:
+```
+Bash
+mvnw.cmd exec:java -Dexec.mainClass="org.example.Main2"
+```
+
+Para iniciar la segunda interfaz (Main2) en Linux o Mac:
+
+```
+Bash
+./mvnw exec:java -Dexec.mainClass="org.example.Main2"
+```
 ## Diagramas de Comunicación (GRASP)
 
 ### Diagrama 1 — Registrar Vacunación (Creacional)
