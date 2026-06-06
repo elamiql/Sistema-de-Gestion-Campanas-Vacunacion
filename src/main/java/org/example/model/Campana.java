@@ -1,12 +1,17 @@
 package org.example.model;
 
-public class Campana {
+import java.util.ArrayList;
+import java.util.List;
+
+public class Campana implements ComponenteVacunacion {
     private int id;
     private String nombre;
     private String descripcion;
     private String fechaInicio;
     private String fechaTermino;
     private String estado;
+    private List<CentroVacunacion> centros = new ArrayList<>();
+    private List<Vacunacion> vacunaciones = new ArrayList<>();
 
     // Constructor con todos los parámetros
     public Campana(int id, String nombre, String descripcion, String fechaInicio, String fechaTermino) {
@@ -65,6 +70,44 @@ public class Campana {
 
     public void setEstado(String estado) {
         this.estado = estado;
+    }
+
+    // --- Composite: gestión de centros y vacunaciones ---
+
+    public void agregarCentro(CentroVacunacion centro) {
+        this.centros.add(centro);
+    }
+
+    public void eliminarCentro(CentroVacunacion centro) {
+        this.centros.remove(centro);
+    }
+
+    public List<CentroVacunacion> getCentros() {
+        return centros;
+    }
+
+    public void agregarVacunacion(Vacunacion vacunacion) {
+        this.vacunaciones.add(vacunacion);
+    }
+
+    public List<Vacunacion> getVacunaciones() {
+        return vacunaciones;
+    }
+
+    // Nodo composite: delega a sus hijos (centros) y suma los resultados
+    @Override
+    public int getCitas() {
+        return centros.stream()
+                .mapToInt(ComponenteVacunacion::getCitas)
+                .sum();
+    }
+
+    // Nodo composite: delega a sus hijos (centros) y suma los resultados
+    @Override
+    public int getVacunas() {
+        return centros.stream()
+                .mapToInt(ComponenteVacunacion::getVacunas)
+                .sum();
     }
 
     @Override
