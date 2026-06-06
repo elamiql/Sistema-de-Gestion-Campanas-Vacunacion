@@ -21,6 +21,15 @@ Entrega 2 — Diseño de Software · Universidad de Concepción
 
 ```
 SistemaGestionCampanaVacunacion/
+├── BPMN/
+│   └── bpmn.jpeg
+├── diagrama_de_clases_uml/
+│   └── uml.jpeg
+├── diagramas_comunicacionales/
+│   ├── DiagramaComunicacionConsulta.png
+│   └── DiagramaComunicacionCreacional.jpg
+├── esquema_seguridad/
+│   └── Esquema de Seguridad.pdf
 ├── src/main/java/org/example/
 │   ├── builder/
 │   │   ├── Builder.java                  # Interfaz Builder
@@ -39,14 +48,12 @@ SistemaGestionCampanaVacunacion/
 │   │   ├── EmailNotificacionListener.java
 │   │   ├── SMSNotificacionListener.java
 │   │   └── LogAuditoriaListener.java
-│   └── Main.java
+│   ├── Main.java
+│   └── Main2.java                        # Interfaz de línea de comando
 ├── uml_patrones/
 │   ├── patron_builder_uml.jpeg
 │   ├── patron_composite_uml.jpeg
-│   ├── patron_observer_uml.jpg
-│   ├── DiagramaComunicacionCreacional.jpg
-│   ├── DiagramaComunicacionConsulta.png
-│   └── uml.jpeg
+│   └── patron_observer_uml.jpg
 └── pom.xml
 ```
 
@@ -58,7 +65,7 @@ SistemaGestionCampanaVacunacion/
 
 ### Diagrama 1 — Registrar Vacunación (Creacional)
 
-![Diagrama Comunicación Creacional](uml_patrones/DiagramaComunicacionCreacional.jpg)
+![Diagrama Comunicación Creacional](diagramas_comunicacionales/DiagramaComunicacionCreacional.jpg)
 
 Este diagrama modela el flujo **Registrar Vacunación**, el cual incluye una validación previa para evitar registros duplicados.
 
@@ -95,7 +102,7 @@ Una vez creada la vacuna (y solo si la validación fue exitosa), el sistema debe
 
 ### Diagrama 2 — Consultar Historial (Consulta)
 
-![Diagrama Comunicación Consulta](uml_patrones/DiagramaComunicacionConsulta.png)
+![Diagrama Comunicación Consulta](diagramas_comunicacionales/DiagramaComunicacionConsulta.png)
 
 Este diagrama expone el flujo de comunicación al solicitar el historial de vacunación de una persona. Se verifican las citas de la persona en el sistema donde se realizó una vacunación. Cada una de las citas entrega una descripción de la vacuna, que incluye la id, la fecha, observaciones, el nombre de la campaña a la que pertenece y el centro de vacunación donde se llevó a cabo.
 
@@ -127,7 +134,7 @@ Al delegar a cada objeto la responsabilidad de entregar únicamente su propia in
 
 ## Diagrama de Clases Refinado
 
-![Diagrama de Clases Refinado](uml.jpeg)
+![Diagrama de Clases Refinado](diagrama_de_clases_uml/uml.jpeg)
 
 El diagrama incorpora los métodos derivados de los mensajes de ambos diagramas de comunicación y la navegabilidad explícita en las asociaciones:
 
@@ -295,5 +302,4 @@ El Controlador de Seguridad centraliza la lógica de autorización y actúa como
 
 
 ## Diagrama de Proceso BPMN
-
-<!-- PENDIENTE: agregar imagen del diagrama BPMN una vez disponible -->
+![Diagrama BPMN](BPMN/bpmn.jpeg)
