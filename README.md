@@ -347,3 +347,4 @@ El Controlador de Seguridad centraliza la lógica de autorización y actúa como
 
 ## Diagrama de Proceso BPMN
 ![Diagrama BPMN](BPMN/bpmn.jpeg)
+El diagrama BPMN organiza la ejecución del sistema. Los carriles representan a los actores validados por el Controlador de Seguridad (Paciente, Vacunador, Admin). Las tareas reflejan directamente los mensajes de los diagramas de comunicación (ej. 'Registrar Vacunación' dispara el flujo Creacional y el Controlador delega al Experto en Información). Las compuertas validan las reglas de negocio (como evitar vacunas duplicadas) y coordinan la ejecución de los patrones como el Observer para notificar al final del flujo.
