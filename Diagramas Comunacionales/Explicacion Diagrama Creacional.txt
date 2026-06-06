@@ -1,0 +1,17 @@
+El diagrama de comunicación modela el flujo Registrar Vacunación, el cual incluye una validación previa para evitar registros duplicados. Las responsabilidades se asignaron aplicando los siguientes patrones GRASP:
+
+Controlador (Controlador de Fachada)
+Asignado a: CentroVacunacion
+Justificación: Se utiliza un controlador de fachada que representa el recinto físico donde ocurre el evento. CentroVacunacion es el primer objeto más allá de la capa de presentación (UI) que recibe el mensaje del sistema (registrarVacunacion). Su responsabilidad es coordinar el flujo delegando el trabajo a los objetos de dominio correspondientes, sin ejecutar la lógica de negocio por sí mismo.
+
+Experto en Información (Fase de Validación)
+Asignado a: Persona y Cita (citas pasadas)
+Justificación: Para validar si el paciente ya posee la vacuna solicitada, la responsabilidad de buscar en el historial recae en Persona, ya que es la experta que contiene la colección de sus propias citas. A su vez, cada Cita pasada es la experta que conoce si culminó en una Vacunación, y esta última es la experta en conocer a qué Campaña perteneció. Se respeta el encapsulamiento pidiendo a cada objeto su propia información.
+
+Creador
+Asignado a: Cita (cita actual)
+Justificación: La responsabilidad de instanciar el nuevo objeto Vacunación (mediante el mensaje <>) se asigna a Cita. Según GRASP, la clase B debe crear a la clase A si B registra, contiene o tiene los datos de inicialización de A. En este modelo, la cita registra el evento médico y posee el contexto del paciente y la fecha/hora.
+
+Experto en Información (Fase de Actualización)
+Asignado a: Campaña
+Justificación: Una vez creada la vacuna (y solo si la validación fue exitosa), el sistema debe actualizar las métricas. Se le envía el mensaje agregarVacunacion(nuevaVac) a la clase Campaña porque es la experta responsable de agrupar y contabilizar el total de ciudadanos vacunados bajo su iniciativa.
